@@ -1,7 +1,7 @@
 <?php
 
-    function accueilControleur(){
-        echo 'Page d\'accueil du site';
+    function accueilControleur($twig){
+        echo $twig->render('accueil.html.twig', array());
     }
 
     function contactControleur(){
