@@ -2,9 +2,12 @@
     class Utilisateur{
         private $db;
         private $insert;
+        private $connect;
+
         public function __construct($db){
             $this->db = $db;
-            $this->insert  =  $this->db->prepare("insert into utilisateur(email,  mdp,  nom,  prenom, idRole, dateInscription) values(:email, :mdp, :nom, :prenom, :role, now())");
+            $this->insert = $this->db->prepare("insert into utilisateur(email,  mdp,  nom,  prenom, idRole, dateInscription) values(:email, :mdp, :nom, :prenom, :role, now())");
+            $this->connect = $this->db->prepare("select email, mdp, idRole, nom, prenom from utilisateur where email=:email");
         }
 
         public function insert($email, $mdp, $role, $nom, $prenom){
@@ -17,6 +20,16 @@
             }
             
             return $r;
+        }
+
+        public function connect($email){
+            $unUtilisateur = $this->connect->execute(array(':email'=>$email));
+
+            if($this->connect->errorCode()!=0){
+                print_r($this->connect->errorInfo());
+            }
+
+            return $this->connect->fetch();
         }
     }
 

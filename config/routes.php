@@ -3,6 +3,8 @@
         $pages['accueil'] = "accueilControleur";
         $pages['contact'] = "contactControleur";
         $pages['inscription'] = "inscriptionControleur";
+        $pages['connexion'] = "connexionControleur";
+        $pages['deconnexion'] = "deconnexionControleur";
 
         if($db!=null){
             if (isset($_GET['page'])){
