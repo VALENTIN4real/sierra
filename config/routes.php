@@ -5,6 +5,7 @@
         $pages['inscription'] = "inscriptionControleur";
         $pages['connexion'] = "connexionControleur";
         $pages['deconnexion'] = "deconnexionControleur";
+        $pages['profil'] = "profilControleur";
 
         if($db!=null){
             if (isset($_GET['page'])){

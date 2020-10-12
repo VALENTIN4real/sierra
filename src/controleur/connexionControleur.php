@@ -18,7 +18,12 @@
                     $_SESSION['login'] = $email;
                     $_SESSION['role'] = $unUtilisateur['idRole'];
                     $_SESSION['prenom'] = $unUtilisateur['prenom'];
+                    $_SESSION['nom'] = $unUtilisateur['nom'];
+                    $_SESSION['id'] = $unUtilisateur['id'];
+                    $_SESSION['dateInscription'] = $unUtilisateur['dateInscription'];
+                    
                     header("Location:index.php");
+                    print_r($_SESSION['id']);
                 }
             } else {
                 $form['valide'] = false;
