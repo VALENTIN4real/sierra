@@ -23,7 +23,6 @@
                     $_SESSION['dateInscription'] = $unUtilisateur['dateInscription'];
                     
                     header("Location:index.php");
-                    print_r($_SESSION['id']);
                 }
             } else {
                 $form['valide'] = false;
