@@ -8,6 +8,7 @@
             $this->db = $db;
             $this->insertArticle = $this->db->prepare("insert into article(idAuteur, auteur, titre, contenu) values(:idAuteur, :auteur, :titreArticle, :contenuArticle)");
             $this->selectArticle = $this->db->prepare("select auteur, titre, contenu from article");
+            $this->selectMesArticles =$this->db->prepare("select auteur, titre, contenu from article where idAuteur = $_SESSION[id]");
         }
 
         public function insertArticle($idAuteur, $auteur, $titreArticle, $contenuArticle){
@@ -30,6 +31,16 @@
             }
             
             return $this->selectArticle->fetchAll();
+        }
+
+        public function selectMesArticles() {
+            $this->selectMesArticles->execute();
+            
+            if ($this->selectMesArticles->errorCode()!=0){
+                print_r($this->selectMesArticles->errorInfo());
+            }
+            
+            return $this->selectMesArticles->fetchAll();
         }
     }
 ?>

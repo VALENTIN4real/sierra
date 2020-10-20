@@ -7,7 +7,8 @@
         $pages['deconnexion'] = "deconnexionControleur";
         $pages['profil'] = "profilControleur";
         $pages['nouvel_article'] = "nouvelArticleControleur";
-        $pages['liste_articles'] = "listeArticles";
+        $pages['liste_articles'] = "listeArticlesControleur";
+        $pages['mes_articles'] = "mesArticlesControleur";
 
         if($db!=null){
             if (isset($_GET['page'])){

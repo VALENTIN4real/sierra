@@ -26,10 +26,17 @@
         
     }
 
-    function listeArticles($twig, $db){
+    function listeArticlesControleur($twig, $db){
         $form = array();
         $article = new Article($db);
         $listeArticles = $article->selectArticle();
         echo $twig->render('liste_articles.html.twig', array('form'=>$form,'listeArticles'=>$listeArticles));
+    }
+
+    function mesArticlesControleur($twig, $db){
+        $form = array();
+        $article = new Article($db);
+        $listeMesArticles = $article->selectMesArticles();
+        echo $twig->render('mes_articles.html.twig', array('form'=>$form,'listeMesArticles'=>$listeMesArticles));
     }
 ?>
