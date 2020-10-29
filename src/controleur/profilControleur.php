@@ -1,10 +1,12 @@
 <?php
     function profilControleur($twig, $db){
-        $utilisateur = new Utilisateur($db);
-        
-        
-        $unUtilisateur = $utilisateur->connect($id);
+        $form = array();
 
-        echo $twig->render('profil.html.twig', array());
+        $idProfil = $_GET['profil_id'];
+
+        $profil = new Profil($db);
+        $unProfil = $profil->getProfil($idProfil);
+        
+        echo $twig->render('profil.html.twig', array('form'=>$form, 'profil'=>$unProfil));
     }
 ?>

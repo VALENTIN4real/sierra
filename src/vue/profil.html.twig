@@ -3,9 +3,7 @@
 {% block title %} Espace membre{% endblock %}
 
 {% block contenu %}
-<div class="col justify-content-center align-items-center">
-    <h1>Profil de {{ session.prenom }} {{ session.nom }}</h1>
-    <p>Adresse mail : {{ session.login }}</p>
-    <p>Date d'inscription : {{ session.dateInscription }}</p>
-</div>
+<h1>Profil de {{profil.nom}} {{profil.prenom}}</h1>
+<p>Adresse email : {{profil.email}}</p>
+<p>Date d'inscription : {{profil.dateInscription}}</p>
 {% endblock %}

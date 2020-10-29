@@ -10,6 +10,9 @@
                     <h5 class="card-title">{{article.titre}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{article.auteur}}</h6>
                     <p class="card-text">{{article.contenu}}</p>
+                    {% if article.idAuteur == session.id %}
+                        <p>Modifier</p>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

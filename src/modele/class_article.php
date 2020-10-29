@@ -7,8 +7,8 @@
         public function __construct($db){
             $this->db = $db;
             $this->insertArticle = $this->db->prepare("insert into article(idAuteur, auteur, titre, contenu) values(:idAuteur, :auteur, :titreArticle, :contenuArticle)");
-            $this->selectArticle = $this->db->prepare("select auteur, titre, contenu from article");
-            $this->selectMesArticles =$this->db->prepare("select auteur, titre, contenu from article where idAuteur = $_SESSION[id]");
+            $this->selectArticle = $this->db->prepare("select auteur, idAuteur, titre, contenu from article");
+            $this->selectMesArticles =$this->db->prepare("select auteur, idAuteur, titre, contenu from article where idAuteur = $_SESSION[id]");
         }
 
         public function insertArticle($idAuteur, $auteur, $titreArticle, $contenuArticle){
