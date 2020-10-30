@@ -6,9 +6,9 @@
 
         public function __construct($db){
             $this->db = $db;
-            $this->insertArticle = $this->db->prepare("insert into article(idAuteur, auteur, titre, contenu) values(:idAuteur, :auteur, :titreArticle, :contenuArticle)");
-            $this->selectArticle = $this->db->prepare("select auteur, idAuteur, titre, contenu from article");
-            $this->selectMesArticles =$this->db->prepare("select auteur, idAuteur, titre, contenu from article where idAuteur = $_SESSION[id]");
+            $this->insertArticle = $this->db->prepare("INSERT INTO article(idAuteur, auteur, titre, contenu, dateArticle) VALUES(:idAuteur, :auteur, :titreArticle, :contenuArticle, NOW())");
+            $this->selectArticle = $this->db->prepare("SELECT auteur, idAuteur, titre, contenu FROM article ORDER BY dateArticle DESC");
+            $this->selectMesArticles =$this->db->prepare("SELECT auteur, idAuteur, titre, contenu FROM article WHERE idAuteur = $_SESSION[id] ORDER BY dateArticle DESC");
         }
 
         public function insertArticle($idAuteur, $auteur, $titreArticle, $contenuArticle){

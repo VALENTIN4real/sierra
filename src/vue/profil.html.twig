@@ -1,9 +1,9 @@
 {% extends "base.html.twig" %}
 
-{% block title %} Espace membre{% endblock %}
+{% block title %} Espace membre - {{profil.prenom}} {{profil.nom}}{% endblock %}
 
 {% block contenu %}
-<h1>Profil de {{profil.nom}} {{profil.prenom}}</h1>
+<h1>Profil de {{profil.prenom}} {{profil.nom}}</h1>
 <p>Adresse email : {{profil.email}}</p>
 <p>Date d'inscription : {{profil.dateInscription}}</p>
 {% endblock %}

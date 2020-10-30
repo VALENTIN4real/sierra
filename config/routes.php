@@ -9,6 +9,7 @@
         $pages['nouvel_article'] = "nouvelArticleControleur";
         $pages['liste_articles'] = "listeArticlesControleur";
         $pages['mes_articles'] = "mesArticlesControleur";
+        $pages['modif_article'] = "modifArticleControleur";
 
         if($db!=null){
             if (isset($_GET['page'])){

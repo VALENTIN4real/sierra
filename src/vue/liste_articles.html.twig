@@ -11,7 +11,10 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{article.auteur}}</h6>
                     <p class="card-text">{{article.contenu}}</p>
                     {% if article.idAuteur == session.id %}
-                        <p>Modifier</p>
+                        <a href="#"><button type="button" class="btn btn-primary">Modifier (propriétaire de l'article)</button></a>
+                    {% endif %}
+                    {% if session.role == 2 %}
+                        <a href="#"><button type="button" class="btn btn-primary">Modifier (administrateur)</button></a>
                     {% endif %}
                 </div>
             </div>

@@ -39,4 +39,8 @@
         $listeMesArticles = $article->selectMesArticles();
         echo $twig->render('mes_articles.html.twig', array('form'=>$form,'listeMesArticles'=>$listeMesArticles));
     }
+
+    function modifArticleControleur($twig, $db){
+        
+    }
 ?>
