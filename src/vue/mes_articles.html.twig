@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }} Mes articles{% endblock %}
 
 {% block contenu %}
-
+    {% if session.login is defined %}
         {% for article in listeMesArticles %}
             <div class="card">
                 <div class="card-body">
@@ -11,9 +11,13 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{article.auteur}}</h6>
                     <p class="card-text">{{article.contenu}}</p>
                     {% if article.idAuteur == session.id %}
-                        <button type="button" class="btn btn-primary">Modifier</button>
+                        <a href="index.php?page=modif_article&id={{article.id}}">Modifier</a>
                     {% endif %}
                 </div>
             </div>
         {% endfor %}
+    {% else %}
+        <h1>Vous n'avez pas accès à cette page.<h1>
+        <h1>Veuillez créer un compte ou vous connecter.</h1>
+    {% endif %}
 {% endblock %}

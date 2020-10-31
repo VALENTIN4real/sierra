@@ -3,12 +3,16 @@
         private $db;
         private $selectArticle;
         private $insertArticle;
+        private $selectById;
+        private $update;
 
         public function __construct($db){
             $this->db = $db;
             $this->insertArticle = $this->db->prepare("INSERT INTO article(idAuteur, auteur, titre, contenu, dateArticle) VALUES(:idAuteur, :auteur, :titreArticle, :contenuArticle, NOW())");
             $this->selectArticle = $this->db->prepare("SELECT auteur, idAuteur, titre, contenu FROM article ORDER BY dateArticle DESC");
-            $this->selectMesArticles =$this->db->prepare("SELECT auteur, idAuteur, titre, contenu FROM article WHERE idAuteur = $_SESSION[id] ORDER BY dateArticle DESC");
+            $this->selectMesArticles =$this->db->prepare("SELECT id, auteur, idAuteur, titre, contenu FROM article WHERE idAuteur = $_SESSION[id] ORDER BY dateArticle DESC");
+            $this->selectById = $this->db->prepare("SELECT id, titre, contenu FROM article WHERE id=:id");
+            $this->update = $db->prepare("UPDATE article SET titre=:titre, contenu=:contenu WHERE id=:id");
         }
 
         public function insertArticle($idAuteur, $auteur, $titreArticle, $contenuArticle){
@@ -41,6 +45,27 @@
             }
             
             return $this->selectMesArticles->fetchAll();
+        }
+
+        public function selectById($id){
+            $this->selectById->execute(array(':id'=>$id));
+            if ($this->selectById->errorCode()!=0){
+                print_r($this->selectById->errorInfo());
+            }
+            
+            return $this->selectById->fetch();
+        }
+
+        public function update($titreArticle, $contenuArticle, $id){
+            $r = true;
+            $this->update->execute(array(':titre'=>$titreArticle, ':contenu'=>$contenuArticle, ':id'=>$id));
+
+            if ($this->update->errorCode()!=0){
+                print_r($this->update->errorInfo());
+                $r = false;
+            }
+
+            return $r;
         }
     }
 ?>
