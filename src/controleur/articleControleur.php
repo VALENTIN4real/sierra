@@ -36,6 +36,23 @@
     function mesArticlesControleur($twig, $db){
         $form = array();
         $article = new Article($db);
+
+        if (isset($_GET['id'])){
+            $exec=$article->delete($_GET['id']);
+
+            if (!$exec){
+                $etat = false;
+            } else {
+                $etat = true;
+            }
+
+            header('Location:index.php?page=mes_articles&etat='.$etat);
+            exit;
+        }
+
+        if(isset($_GET['etat'])){
+            $form['etat'] = $_GET['etat'];
+        }
         $listeMesArticles = $article->selectMesArticles();
         echo $twig->render('mes_articles.html.twig', array('form'=>$form,'listeMesArticles'=>$listeMesArticles));
     }

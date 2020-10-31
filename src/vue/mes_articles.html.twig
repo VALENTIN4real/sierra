@@ -12,6 +12,7 @@
                     <p class="card-text">{{article.contenu}}</p>
                     {% if article.idAuteur == session.id %}
                         <a href="index.php?page=modif_article&id={{article.id}}">Modifier</a>
+                        <a href="index.php?page=mes_articles&id={{article.id}}">Supprimer</a>
                     {% endif %}
                 </div>
             </div>

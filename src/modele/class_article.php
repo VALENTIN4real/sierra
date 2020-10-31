@@ -5,6 +5,7 @@
         private $insertArticle;
         private $selectById;
         private $update;
+        private $delete;
 
         public function __construct($db){
             $this->db = $db;
@@ -13,6 +14,7 @@
             $this->selectMesArticles =$this->db->prepare("SELECT id, auteur, idAuteur, titre, contenu FROM article WHERE idAuteur = $_SESSION[id] ORDER BY dateArticle DESC");
             $this->selectById = $this->db->prepare("SELECT id, titre, contenu FROM article WHERE id=:id");
             $this->update = $db->prepare("UPDATE article SET titre=:titre, contenu=:contenu WHERE id=:id");
+            $this->delete = $db->prepare("DELETE FROM article WHERE id=:id");
         }
 
         public function insertArticle($idAuteur, $auteur, $titreArticle, $contenuArticle){
@@ -62,6 +64,19 @@
 
             if ($this->update->errorCode()!=0){
                 print_r($this->update->errorInfo());
+                $r = false;
+            }
+
+            return $r;
+        }
+
+        public function delete($id){
+            $r = true;
+
+            $this->delete->execute(array(':id'=>$id));
+
+            if ($this->delete->errorCode()!=0){
+                print_r($this->delete->errorInfo());
                 $r = false;
             }
 
