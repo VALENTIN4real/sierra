@@ -9,9 +9,9 @@
 
         public function __construct($db){
             $this->db = $db;
-            $this->insertArticle = $this->db->prepare("INSERT INTO article(idAuteur, auteur, titre, contenu, dateArticle) VALUES(:idAuteur, :auteur, :titreArticle, :contenuArticle, NOW())");
-            $this->selectArticle = $this->db->prepare("SELECT auteur, idAuteur, titre, contenu FROM article ORDER BY dateArticle DESC");
-            $this->selectMesArticles =$this->db->prepare("SELECT id, auteur, idAuteur, titre, contenu FROM article WHERE idAuteur = $_SESSION[id] ORDER BY dateArticle DESC");
+            $this->insertArticle = $this->db->prepare("INSERT INTO article(idAuteur, auteur, titre, contenu, dateArticle, heure, dateComplete) VALUES(:idAuteur, :auteur, :titreArticle, :contenuArticle, NOW(), NOW(), NOW())");
+            $this->selectArticle = $this->db->prepare("SELECT id, auteur, idAuteur, titre, contenu, DATE_FORMAT(dateArticle, '%d/%m/%Y') AS dateArticle, heure FROM article ORDER BY dateComplete DESC");
+            $this->selectMesArticles =$this->db->prepare("SELECT id, auteur, idAuteur, titre, contenu, DATE_FORMAT(dateArticle, '%d/%m/%Y') AS dateArticle, heure FROM article WHERE idAuteur = $_SESSION[id] ORDER BY dateComplete DESC");
             $this->selectById = $this->db->prepare("SELECT id, titre, contenu FROM article WHERE id=:id");
             $this->update = $db->prepare("UPDATE article SET titre=:titre, contenu=:contenu WHERE id=:id");
             $this->delete = $db->prepare("DELETE FROM article WHERE id=:id");

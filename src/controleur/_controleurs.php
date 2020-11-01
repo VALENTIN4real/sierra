@@ -4,4 +4,5 @@
     require_once 'connexionControleur.php';
     require_once 'profilControleur.php';
     require_once 'articleControleur.php';
+    require_once 'utilisateursControleur.php';
 ?>
