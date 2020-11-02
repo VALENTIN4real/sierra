@@ -23,11 +23,11 @@
                 </form>
             {% else %}
                 <h2 class="alert alert-danger" role="alert">{{form.message}}</h2>
-                <a href="index.php?page=mes_articles">Retourner sur la liste de mes articles</a>
+                <a href="index.php?page=utilisateurs">Retourner sur la liste des utilisateurs</a>
             {% endif %}
         {% else %}
             <h2 class="alert alert-danger" role="alert">{{form.message}}</h2>
-            <a href="index.php?page=mes_articles">Retourner sur la liste de mes articles</a>
+            <a href="index.php?page=utilisateurs">Retourner sur la liste des utilisateurs</a>
         {% endif %}
     </div>
 {% endblock %}
