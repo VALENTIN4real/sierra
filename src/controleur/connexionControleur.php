@@ -34,6 +34,10 @@
     }
 
     function deconnexionControleur($twig, $db){
+        $email = $_SESSION['login'];
+        $utilisateur = new Utilisateur($db);
+
+        $unUtilisateur = $utilisateur->disconnect($email);
         session_unset();
         session_destroy();
         header("Location:index.php");

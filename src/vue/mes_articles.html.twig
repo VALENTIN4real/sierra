@@ -13,6 +13,7 @@
 
     {% if session.login is defined %}
         {% for article in listeMesArticles %}
+        <div class="container col-9">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{article.titre}}</h5>
@@ -24,6 +25,7 @@
                     {% endif %}
                 </div>
             </div>
+        </div>
         {% endfor %}
     {% else %}
         <h1>Vous n'avez pas accès à cette page.<h1>

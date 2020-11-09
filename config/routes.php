@@ -12,6 +12,7 @@
         $pages['modif_article'] = "modifArticleControleur";
         $pages['utilisateurs'] = "utilisateursControleur";
         $pages['modif_user'] = "modifUtilisateurControleur";
+        $pages['utilisateurs_en_ligne'] = "utilisateursEnLigneControleur";
 
         if($db!=null){
             if (isset($_GET['page'])){

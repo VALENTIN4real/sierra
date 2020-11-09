@@ -4,14 +4,10 @@
 
 {% block contenu %}
     {% if session.role == 2 %}
-        <form class="form-inline d-flex justify-content-center md-form form-sm active-purple active-purple-2 mt-2">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Rechercher un utilisateur..." aria-label="Search">
-        </form>
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                    <tr>
+                    <tr style="text-align:center;">
                         <th scope="col">ID</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Prénom</th>
@@ -25,11 +21,11 @@
 
                 <tbody>
                     {% for utilisateurs in userList %}
-                        <tr>
+                        <tr style="text-align:center;">
                             <td>{{utilisateurs.id}}</td>
                             <td>{{utilisateurs.nom}}</td>
                             <td>{{utilisateurs.prenom}}</td>
-                            <td>{{utilisateurs.email}}</td>
+                            <td><a href="mailto:{{utilisateurs.email}}">{{utilisateurs.email}}</a></td>
                             <td>{{utilisateurs.idRole}}</td>
                             <td>{{utilisateurs.dateInscription}}</td>
                             <td><a href="index.php?page=profil&profil_id={{utilisateurs.id}}">{{utilisateurs.prenom}}</a>

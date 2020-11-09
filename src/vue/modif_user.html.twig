@@ -25,16 +25,27 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="password">Mot de passe</label>
-                            <input name="password" id="password" type="password" class="form-control" required>
+                            <input name="password" id="password" type="password" class="form-control">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="password2">Confirmation mot de passe</label>
-                            <input name="password2" id="password2" type="password" class="form-control" required>
+                            <input name="password2" id="password2" type="password" class="form-control">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="role">Rôle</label>
-                            <input name="role" id="role" type="text" class="form-control" value="{{form.utilisateur.idRole}}" required>
-                        </div>
+                        {% if session.role == 2 %}
+                                <div class="form-group col-md-6">
+                                    <label for="role">Rôle</label>
+                                    <select name="role" id="role" class="form-control" required>
+                                        {% if form.utilisateur.idRole == 1 %}
+                                            <option value="1" selected>Utilisateur</option>
+                                            <option value="2">Administrateur</option>
+                                        {% endif %}
+                                        {% if form.utilisateur.idRole == 2 %}
+                                            <option value="1">Utilisateur</option>
+                                            <option value="2" selected>Administrateur</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                        {% endif %}
                     </div>
 
                     <input type="hidden" name="id" value="{{form.utilisateur.id}}"/>

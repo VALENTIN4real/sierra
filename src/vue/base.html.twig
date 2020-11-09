@@ -40,10 +40,12 @@
                                 <a class="nav-link" href="index.php?page=utilisateurs">Utilisateurs</a>
                             </li>
                         {% endif %}
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?page=utilisateurs_en_ligne">Utilisateurs en ligne</a>
+                        </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Search</button>
 
                     {% if session.login is defined %}
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -52,7 +54,6 @@
                                     <a class="dropdown-toggle btn btn-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ session.prenom }} {{ session.nom }}</a>
                                     <div class="dropdown-menu dropdown-menu-right mt-4" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="index.php?page=profil&profil_id={{session.id}}">Mon profil</a>
-                                        <a class="dropdown-item" href="#">Messagerie</a>
                                     <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="index.php?page=deconnexion">Me déconnecter</a>
                                     </div>

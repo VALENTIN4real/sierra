@@ -63,5 +63,11 @@
 
         echo $twig->render('modif_user.html.twig', array('form'=>$form));
     }
-    
+
+    function utilisateursEnLigneControleur($twig, $db){
+        $form = array();
+        $utilisateur = new Utilisateur($db);
+        $onlineUserList = $utilisateur->getOnlineUsers();
+        echo $twig->render('utilisateurs_en_ligne.html.twig', array('form'=>$form, 'onlineUserList'=>$onlineUserList));
+    }
 ?>
