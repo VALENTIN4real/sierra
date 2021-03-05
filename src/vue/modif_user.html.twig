@@ -45,6 +45,10 @@
                                         {% endif %}
                                     </select>
                                 </div>
+                        {% else %}
+                            <div class="form-group col-md-6">
+                                <input name="role" id="role" type="hidden" value="1" class="form-control" required>
+                            </div>
                         {% endif %}
                     </div>
 

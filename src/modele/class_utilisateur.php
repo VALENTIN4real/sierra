@@ -14,7 +14,7 @@
 
         public function __construct($db){
             $this->db = $db;
-            $this->insert = $this->db->prepare("INSERT INTO utilisateur(email,  mdp,  nom,  prenom, idRole, dateInscription) VALUES(:email, :mdp, :nom, :prenom, :role, NOW())");
+            $this->insert = $this->db->prepare("INSERT INTO utilisateur(email,  mdp,  nom,  prenom, idRole, dateInscription, estConnecte) VALUES(:email, :mdp, :nom, :prenom, :role, NOW(), 0)");
             $this->connect = $this->db->prepare("SELECT id, email, mdp, idRole, nom, prenom, dateInscription FROM utilisateur WHERE email=:email");
             $this->statutConnexion = $this->db->prepare("UPDATE utilisateur SET estConnecte = 1 WHERE email=:email");
             $this->statutDeconnexion = $this->db->prepare("UPDATE utilisateur SET estConnecte = 0 WHERE email=:email");
